@@ -52,7 +52,7 @@ func main() {
 	//
 
 	// Read ip's from txt and convert to slice, so we can loop
-	ipAddresses, err := getIpData()
+	ipAddresses, err := getIpData(printerIpFile)
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(0)
