@@ -1,0 +1,11 @@
+.vscode/
+.idea/
+.fleet/
+dist/*
+bin/*
+*.exe
+*.so
+__*
+
+password.txt
+printer_ip_list.txt
