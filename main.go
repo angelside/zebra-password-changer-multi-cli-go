@@ -26,7 +26,7 @@ func main() {
 	//
 
 	// Read password from txt file
-	password, err := readFileContent(passwordFile)
+	password, err := ReadFileContent(passwordFile)
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(0)
@@ -34,10 +34,12 @@ func main() {
 	fmt.Printf("New password: %s \n", infoColor(password))
 
 	// Validate password
-	if err := validatePassword(password, passwordTotalChar); err != nil {
-		fmt.Println(err)
-		os.Exit(0)
-	}
+	/*
+		if err := validatePassword(password, passwordTotalChar); err != nil {
+			fmt.Println(err)
+			os.Exit(0)
+		}
+	*/
 
 	//
 	// ZPL code
@@ -52,7 +54,8 @@ func main() {
 	//
 
 	// Read ip's from txt and convert to slice, so that it can be looped
-	ipAddresses, err := getIpData(printerIpFile)
+	//ipAddresses, err := getIpData(printerIpFile)
+	ipAddresses, err := FileToSlice(printerIpFile)
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(0)

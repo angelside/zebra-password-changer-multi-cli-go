@@ -1,35 +1,45 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"os"
+	"io/ioutil"
 	"strings"
 )
 
-// Read given file content
-func readFileContent(file string) (string, error) {
-	// Read the file into a []byte slice
-	data, err := os.ReadFile(file)
+/*
+data, err := FileToSlice("data.txt")
+if err != nil {
+	fmt.Println(err)
+}
+*/
+
+// Main package function
+func FileToSlice(file string) ([]string, error) {
+	// Read data from txt file
+	data, err := ReadFileContent(file)
 	if err != nil {
-		return "", fmt.Errorf("\n%s File does not exist: %s", errorColor("[ERROR]"), infoColor(file))
+		return []string{}, err
+	}
+
+	return splitLines(data), nil
+}
+
+// Read given file content
+// I am exporting this because can be usefull for reading file with only one line
+func ReadFileContent(file string) (string, error) {
+	data, err := ioutil.ReadFile(file)
+	if err != nil {
+		return "", fmt.Errorf("File does not exist: %s", file)
 	}
 
 	return strings.TrimSpace(string(data)), nil
 }
 
-/*
-Split lines from a string
-
-Takes in a string and returns a slice of strings, where each string is a line from the input string.
-*/
+// Convert string to slice, so we can loop
+// TODO: Test this in Linux
 func splitLines(s string) []string {
-	var lines []string
-	sc := bufio.NewScanner(strings.NewReader(s))
-
-	for sc.Scan() {
-		lines = append(lines, sc.Text())
-	}
-
-	return lines
+	return strings.FieldsFunc(s, func(r rune) bool {
+		// Linux: "\n", Windows: "\r\n"
+		return r == '\r' || r == '\n'
+	})
 }
