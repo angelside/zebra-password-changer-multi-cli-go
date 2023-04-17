@@ -18,7 +18,7 @@ func main() {
 	fmt.Print("\033[H\033[2J")
 
 	// CLI title
-	fmt.Printf("=== %s =====================\n\n", "Zebra Pasword changer")
+	fmt.Printf("=== %s =====================\n\n", "Zebra password changer")
 	fmt.Printf("Env: %s \n", infoColor(appEnv))
 
 	//
