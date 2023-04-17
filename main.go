@@ -51,7 +51,7 @@ func main() {
 	// IP
 	//
 
-	// Read ip's from txt and convert to slice, so we can loop
+	// Read ip's from txt and convert to slice, so that it can be looped
 	ipAddresses, err := getIpData(printerIpFile)
 	if err != nil {
 		fmt.Println(err)

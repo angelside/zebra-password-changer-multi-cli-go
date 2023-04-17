@@ -1,6 +1,6 @@
 package main
 
-// Read ip's from txt and convert to slice, so we can loop
+// Read ip's from txt and convert to slice, so that it can be looped
 func getIpData(file string) ([]string, error) {
 	ipAddresses := []string{}
 
