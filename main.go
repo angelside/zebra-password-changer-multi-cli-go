@@ -34,6 +34,7 @@ func main() {
 	fmt.Printf("New password: %s \n", infoColor(password))
 
 	// Validate password
+    // FIXME: Finish this
 	/*
 		if err := validatePassword(password, passwordTotalChar); err != nil {
 			fmt.Println(err)
