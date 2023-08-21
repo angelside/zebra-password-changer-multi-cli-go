@@ -24,8 +24,8 @@ func FileToSlice(file string) ([]string, error) {
 	return splitLines(data), nil
 }
 
-// Read given file content
-// I am exporting this because can be usefull for reading file with only one line
+// Read the given file content
+// I am exporting this because can be useful for reading files with only one line
 func ReadFileContent(file string) (string, error) {
 	data, err := ioutil.ReadFile(file)
 	if err != nil {
