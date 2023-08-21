@@ -10,7 +10,7 @@ import (
 )
 
 //
-// TODO: Generete log file and next run only run for the ip with error status ?
+// TODO: Generate log file and next run only run for the ip with error status?
 //
 
 func main() {
