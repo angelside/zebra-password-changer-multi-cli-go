@@ -23,7 +23,7 @@ func GoDotEnvVariable(key string) string {
 	// load .env file
 	err := godotenv.Load(".env")
 	if err != nil {
-		// We are not required to have an .env file
+		// We are not required to have a .env file
 		//log.Fatalf("Error loading .env file")
 	}
 
