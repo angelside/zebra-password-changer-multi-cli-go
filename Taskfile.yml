@@ -8,10 +8,7 @@ env:
   VERSION_NUMBER: 0.0.1
 
   BUILD_DIR: __dist
-  RELEASE_DIR: __dist/release
-
   BUILD_FILE: "{{.BUILD_DIR}}/{{.BINARY_NAME}}.exe"
-  RELEASE_FILE: "{{.RELEASE_DIR}}/{{.BINARY_NAME}}.exe"
 
   LDFLAGS: -ldflags="-s -w"
 
@@ -20,9 +17,5 @@ tasks:
     desc: Build the go binary.
     cmds:
       - go build -v {{.LDFLAGS}} -o {{.BUILD_FILE}}
-  release:
-    desc: Release the go binary.
-    cmds:
-      - go build -v {{.LDFLAGS}} -o {{.RELEASE_FILE}}
-      - upx --best {{.RELEASE_FILE}}
-    ignore_error: true
+      #- upx --best {{.RELEASE_FILE}}
+    #ignore_error: true
