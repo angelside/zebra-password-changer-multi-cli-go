@@ -4,9 +4,6 @@ env:
   PROJECT_PKG: app
 
   BINARY_NAME: zabraPassChangerMulti
-  VERSION: dev
-  VERSION_NUMBER: 0.0.1
-
   BUILD_DIR: __dist
   BUILD_FILE: "{{.BUILD_DIR}}/{{.BINARY_NAME}}.exe"
 
