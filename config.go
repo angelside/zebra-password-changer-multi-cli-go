@@ -11,17 +11,13 @@ import (
 var passwordFile = "password.txt"
 var printerIpFile = "printer_ip_list.txt"
 var errorFile = "errors.txt"
-var appEnv = GoDotEnvVariable("APP_ENV")
-
-/*
 var appEnv = func() string {
-    value := GoDotEnvVariable("APP_ENV")
-    if value == "" {
-        return "prod"
-    }
-    return value
+	value := GoDotEnvVariable("APP_ENV")
+	if value == "" { // Default APP_ENV=prod
+		return "prod"
+	}
+	return value
 }()
-*/
 
 // Colors
 var successColor = color.New(color.FgGreen).SprintFunc()
