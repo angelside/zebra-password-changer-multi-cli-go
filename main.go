@@ -58,6 +58,12 @@ func main() {
 		exit()
 	}
 
+	// Delete errors.txt file if exists
+	if err := deleteErrorFileIfExists(errorFile); err != nil {
+		fmt.Println("Error:", err)
+		// Handle the error
+	}
+
 	// Create errors.txt file
 	if err := createErrorFile(errorFile); err != nil {
 		fmt.Println(err)

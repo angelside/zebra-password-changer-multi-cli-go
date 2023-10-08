@@ -69,3 +69,20 @@ func writeIPToErrorFile(ip, filename string) error {
 
 	return nil
 }
+
+func deleteErrorFileIfExists(filename string) error {
+	// Check if the file exists
+	if _, err := os.Stat(filename); err == nil {
+		// File exists, so delete it
+		if err := os.Remove(filename); err != nil {
+			return err
+		}
+		fmt.Printf("Deleted: %s\n", filename)
+	} else if os.IsNotExist(err) {
+		//fmt.Printf("%s does not exist\n", filename)
+		// Handle the case where the file doesn't exist (optional)
+	} else {
+		return err
+	}
+	return nil
+}
