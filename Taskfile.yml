@@ -7,6 +7,8 @@ env:
   BUILD_DIR: __dist
   BUILD_FILE: "{{.BUILD_DIR}}/{{.BINARY_NAME}}.exe"
 
+  ICON_FILE: static/icon.ico
+
   LDFLAGS: -ldflags="-s -w"
 
 tasks:
@@ -14,5 +16,6 @@ tasks:
     desc: Build the go binary.
     cmds:
       - go build -v {{.LDFLAGS}} -o {{.BUILD_FILE}}
+      - rcedit {{.BUILD_FILE}} --set-icon {{.ICON_FILE}}
       #- upx --best {{.RELEASE_FILE}}
     #ignore_error: true
