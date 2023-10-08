@@ -22,7 +22,7 @@ func validatePassword(password string, totalChar int) error {
 
 	// Invalid password
 	if len(password) != totalChar || !b {
-		return fmt.Errorf("%s Password is invalid! Please use %d-digit number.", errorColor("[ERROR]"), passwordTotalChar)
+		return fmt.Errorf("%s Password is invalid! Please use %d-digit number.", errorColor("[ERROR]"), totalChar)
 	}
 
 	return nil
