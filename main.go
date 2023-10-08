@@ -25,14 +25,17 @@ func main() {
 	password, err := readFileContent(passwordFile)
 	if err != nil {
 		fmt.Println(err)
-		os.Exit(0)
+		//os.Exit(0)
+		// Exit with key
+		exit()
 	}
 	fmt.Printf("New password: %s \n", infoColor(password))
 
 	// Password validation / 4 digit number
 	if err := validatePassword(password, 4); err != nil {
 		fmt.Println(err)
-		os.Exit(0)
+		// Exit with key
+		exit()
 	}
 
 	//
@@ -51,13 +54,15 @@ func main() {
 	ipAddresses, err := fileToSlice(printerIpFile)
 	if err != nil {
 		fmt.Println(err)
-		os.Exit(0)
+		// Exit with key
+		exit()
 	}
 
 	// Create errors.txt file
 	if err := createErrorFile(errorFile); err != nil {
 		fmt.Println(err)
-		os.Exit(1)
+		// Exit with key
+		exit()
 	}
 
 	//
@@ -114,6 +119,11 @@ func main() {
 	// Print the table
 	tbl.Print()
 
+	// Exit with key
+	exit()
+}
+
+func exit() {
 	// Exit
 	fmt.Println("\n\nPress ENTER key for exit.")
 	fmt.Scanln()
