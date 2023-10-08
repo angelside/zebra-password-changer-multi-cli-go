@@ -9,10 +9,6 @@ import (
 	"github.com/rodaine/table"
 )
 
-//
-// TODO: Generate log file and next run only run for the ip with error status?
-//
-
 func main() {
 	// Clear the screen
 	fmt.Print("\033[H\033[2J")
@@ -34,10 +30,10 @@ func main() {
 	fmt.Printf("New password: %s \n", infoColor(password))
 
 	// Password validation / 4 digit number
-    if err := validatePassword(password, 4); err != nil {
-        fmt.Println(err)
-        os.Exit(0)
-    }
+	if err := validatePassword(password, 4); err != nil {
+		fmt.Println(err)
+		os.Exit(0)
+	}
 
 	//
 	// ZPL code
@@ -57,6 +53,12 @@ func main() {
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(0)
+	}
+
+	// Create errors.txt file
+	if err := createErrorFile(errorFile); err != nil {
+		fmt.Println(err)
+		os.Exit(1)
 	}
 
 	//
@@ -97,6 +99,12 @@ func main() {
 					resultStatus = successColor("OK")
 				} else {
 					resultStatus = errorColor("NET ERROR")
+
+					// Write ip addresses to the errors.txt file
+					if err := writeIPToErrorFile(ip, errorFile); err != nil {
+						fmt.Println(err)
+						// Handle the error
+					}
 				}
 			}
 		}

@@ -2,9 +2,35 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
+	"os"
 	"strings"
 )
+
+func createErrorFile(filename string) error {
+	file, err := os.Create(filename)
+	if err != nil {
+		return err
+	}
+	defer file.Close()
+
+	return nil
+}
+
+func writeIPToErrorFile(ip, filename string) error {
+	file, err := os.OpenFile(filename, os.O_WRONLY|os.O_APPEND|os.O_CREATE, 0666)
+	if err != nil {
+		return err
+	}
+	defer file.Close()
+
+	data := []byte(ip + "\n")
+	_, err = file.Write(data)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
 
 /*
 data, err := FileToSlice("data.txt")
@@ -27,7 +53,7 @@ func FileToSlice(file string) ([]string, error) {
 // Read the given file content
 // I am exporting this because can be useful for reading files with only one line
 func ReadFileContent(file string) (string, error) {
-	data, err := ioutil.ReadFile(file)
+	data, err := os.ReadFile(file)
 	if err != nil {
 		return "", fmt.Errorf("File does not exist: %s", file)
 	}
