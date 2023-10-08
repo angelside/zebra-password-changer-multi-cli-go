@@ -23,6 +23,11 @@ func readFileContent(file string) (string, error) {
 		return "", fmt.Errorf("File does not exist: %s", file)
 	}
 
+	// Check if file is empty
+	if len(data) == 0 {
+		return "", fmt.Errorf("File is empty: %s", file)
+	}
+
 	return strings.TrimSpace(string(data)), nil
 }
 
