@@ -22,7 +22,7 @@ func main() {
 	//
 
 	// Read password from txt file
-	password, err := ReadFileContent(passwordFile)
+	password, err := readFileContent(passwordFile)
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(0)
@@ -48,8 +48,7 @@ func main() {
 	//
 
 	// Read ip's from txt and convert to slice, so that it can be looped
-	//ipAddresses, err := getIpData(printerIpFile)
-	ipAddresses, err := FileToSlice(printerIpFile)
+	ipAddresses, err := fileToSlice(printerIpFile)
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(0)
@@ -78,7 +77,6 @@ func main() {
 	// Loop
 	//
 
-	// Loop ip's
 	for _, ip := range ipAddresses {
 		//fmt.Println(ip)
 
