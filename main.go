@@ -33,14 +33,11 @@ func main() {
 	}
 	fmt.Printf("New password: %s \n", infoColor(password))
 
-	// Validate password
-    // FIXME: Finish this
-	/*
-		if err := validatePassword(password, passwordTotalChar); err != nil {
-			fmt.Println(err)
-			os.Exit(0)
-		}
-	*/
+	// Password validation / 4 digit number
+    if err := validatePassword(password, 4); err != nil {
+        fmt.Println(err)
+        os.Exit(0)
+    }
 
 	//
 	// ZPL code

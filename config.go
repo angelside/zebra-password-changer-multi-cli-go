@@ -8,7 +8,6 @@ import (
 )
 
 // Config
-var passwordTotalChar = 4
 var passwordFile = "password.txt"
 var printerIpFile = "printer_ip_list.txt"
 var appEnv = GoDotEnvVariable("APP_ENV")
