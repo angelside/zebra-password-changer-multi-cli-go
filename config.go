@@ -12,7 +12,7 @@ var passwordFile = "password.txt"
 var printerIpFile = "printer_ip_list.txt"
 var errorFile = "errors.txt"
 var appEnv = func() string {
-	value := GoDotEnvVariable("APP_ENV")
+	value := GetEnvVariable("APP_ENV")
 	if value == "" { // Default APP_ENV=prod
 		return "prod"
 	}
@@ -25,7 +25,7 @@ var infoColor = color.New(color.FgBlue).SprintFunc()
 var errorColor = color.New(color.FgRed).SprintFunc()
 
 // Use godot package to load/read the .env file and return the value of the key.
-func GoDotEnvVariable(key string) string {
+func GetEnvVariable(key string) string {
 	// load .env file
 	err := godotenv.Load(".env")
 	if err != nil {
