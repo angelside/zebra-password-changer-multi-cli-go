@@ -1,0 +1,97 @@
+# https://golangci-lint.run/usage/configuration/#config-file
+run:
+  issues-exit-code: 1
+linters-settings:
+  errcheck:
+    check-type-assertions: true
+  goconst:
+    min-len: 2
+    min-occurrences: 3
+  gocritic:
+    # https://go-critic.com/overview.html
+    enabled-tags:
+      - diagnostic
+      - experimental
+      - opinionated
+      - performance
+      - style
+  govet:
+    check-shadowing: true
+    enable:
+      - fieldalignment
+  nolintlint:
+    require-explanation: true
+    require-specific: true
+# https://golangci-lint.run/usage/linters/
+linters:
+  disable-all: true
+  enable:
+    - asciicheck
+    - bidichk
+    - bodyclose
+    - cyclop
+    #- depguard
+    - dogsled
+    - dupl
+    - errcheck
+    - errchkjson
+    - errname
+    - errorlint
+    #- exhaustruct
+    - exportloopref
+    - forcetypeassert
+    - gci # not working in powershell, add "del alias:gci -Force" to the "Microsoft.PowerShell_profile.ps1"
+    - goimports
+    - gocheckcompilerdirectives
+    #- gochecknoglobals
+    - gocognit
+    - goconst
+    - gocritic
+    - gocyclo
+    #- godot
+    #- godox
+    - goerr113
+    #- gofmt
+    #- gofumpt
+    - goimports
+    - gomnd
+    - gomoddirectives
+    - gosec
+    - goprintffuncname
+    - gosimple
+    - govet
+    - importas
+    - ineffassign
+    - loggercheck
+    - maintidx
+    - mirror
+    #- misspell
+    - nakedret
+    - nestif
+    - nilnil
+    - nlreturn
+    - nolintlint
+    - nakedret
+    - nonamedreturns
+    - nosprintfhostport
+    - prealloc
+    - predeclared
+    - reassign
+    - revive
+    - rowserrcheck
+    - sloglint
+    - staticcheck
+    #- stylecheck
+    - tagalign
+    - tagliatelle
+    #- thelper
+    #- tparallel
+    - typecheck
+    - unconvert
+    - unused
+    - unparam
+    - usestdlibvars
+    #- whitespace
+    #- wrapcheck
+    #- wsl
+    #- zerologlint
